@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".home.ui.home.AddDataActivity">
+
+
+
+        <include
+            android:id="@+id/layoutBase"
+            layout="@layout/layout_base"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="@dimen/size_180dp"
+            android:layout_height="@dimen/size_150dp"
+            android:layout_below="@+id/layoutBase"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/size_15dp"
+            android:src="@drawable/vingcozlogo"/>
+
+        <EditText
+            android:id="@+id/edittext_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/editext_background"
+            android:layout_below="@id/imageView"
+            android:layout_marginLeft="@dimen/size_15dp"
+            android:layout_marginRight="@dimen/size_15dp"
+            android:padding="@dimen/padd_10"
+            android:layout_marginTop="@dimen/size_15dp"
+            android:drawableLeft="@drawable/ic_baseline_person_24"
+            android:drawablePadding="@dimen/padd_10"
+            android:hint="Name"/>
+
+        <EditText
+            android:id="@+id/edittext_place"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/editext_background"
+            android:layout_below="@id/edittext_name"
+            android:layout_marginLeft="@dimen/size_15dp"
+            android:layout_marginRight="@dimen/size_15dp"
+            android:padding="@dimen/padd_10"
+            android:layout_marginTop="@dimen/size_15dp"
+            android:drawableLeft="@drawable/ic_baseline_phone_android_24"
+            android:drawablePadding="@dimen/padd_10"
+            android:hint="Place"/>
+
+        <EditText
+            android:id="@+id/edittext_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/editext_background"
+            android:layout_below="@id/edittext_place"
+            android:layout_marginLeft="@dimen/size_15dp"
+            android:layout_marginRight="@dimen/size_15dp"
+            android:padding="@dimen/padd_10"
+            android:layout_marginTop="@dimen/size_15dp"
+            android:drawableLeft="@drawable/ic_baseline_person_24"
+            android:drawablePadding="@dimen/padd_10"
+            android:hint="Phone"/>
+
+        <ImageView
+            android:layout_width="@dimen/size_150dp"
+            android:layout_height="@dimen/size_100dp"
+            android:layout_below="@id/edittext_phone"
+            android:layout_centerHorizontal="true"
+            android:visibility="gone"
+            android:layout_marginTop="@dimen/size_15dp"/>
+
+        <TextView
+            android:id="@+id/text_choose"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Choose a Photo"
+            android:layout_below="@id/edittext_phone"
+            android:layout_marginLeft="@dimen/size_15dp"
+            android:layout_marginRight="@dimen/size_15dp"
+            android:layout_marginTop="@dimen/size_15dp"
+            android:textAlignment="center"
+            android:drawableLeft="@drawable/ic_baseline_image_24"
+            android:gravity="center_horizontal"
+            android:padding="@dimen/padd_10"
+            android:textSize="@dimen/size_16dp"
+            />
+
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_choose"
+            android:layout_marginTop="@dimen/size_15dp"
+            android:layout_marginLeft="@dimen/size_15dp"
+            android:layout_marginRight="@dimen/size_15dp"
+            android:text="Add" />
+
+
+
+
+    </RelativeLayout>
+</layout>

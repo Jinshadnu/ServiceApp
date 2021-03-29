@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="subcategory"
+            type="com.example.serviceapp.home.ui.home.pojo.SubCategoryResponse.Sub_categories" />
+    </data>
+    <LinearLayout
+        xmlns:app="http://schemas.android.com/tools"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:background="@color/white"
+        xmlns:bind="http://schemas.android.com/tools"
+        android:layout_height="wrap_content">
+
+
+        <RelativeLayout
+            android:id="@+id/relative_services"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/thumbnail"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:layout_marginTop="@dimen/size_10dp"
+                android:layout_centerHorizontal="true"
+                bind:sub_category_pic="@{subcategory.sub_category_pic}"
+                />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/thumbnail"
+                android:lines="2"
+                android:paddingLeft="@dimen/size_15dp"
+                android:paddingRight="@dimen/size_15dp"
+                android:layout_marginTop="@dimen/size_5dp"
+                android:textColor="@color/black"
+                android:text="@{subcategory.sub_category_name}"
+                android:textAlignment="center"
+                android:textSize="@dimen/size_13dp" />
+
+
+
+        </RelativeLayout>
+
+
+
+
+
+
+
+
+    </LinearLayout>
+</layout>

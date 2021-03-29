@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".home.ui.advertise.AdvertiseFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        app:cardBackgroundColor="@color/white"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="@dimen/size_15dp"
+        android:layout_marginRight="@dimen/size_15dp"
+        app:cardElevation="@dimen/padd_10"
+        android:layout_margin="@dimen/padd_10"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_15dp"
+                android:background="@drawable/editext_background"
+                android:padding="@dimen/padd_10"
+                android:layout_marginLeft="@dimen/padd_10"
+                android:layout_marginRight="@dimen/padd_10"
+                android:hint="Name"
+                />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/editext_background"
+                android:padding="@dimen/padd_10"
+                android:layout_marginTop="@dimen/size_15dp"
+                android:layout_marginLeft="@dimen/padd_10"
+                android:layout_marginRight="@dimen/padd_10"
+                android:hint="Contact Number"
+                />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/editext_background"
+                android:padding="@dimen/size_25dp"
+                android:layout_marginLeft="@dimen/padd_10"
+                android:layout_marginRight="@dimen/padd_10"
+                android:layout_marginTop="@dimen/size_15dp"
+                android:hint="Feedback"
+                />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/padd_10"
+                android:layout_marginRight="@dimen/padd_10"
+                android:layout_marginTop="@dimen/size_15dp"
+                android:text="Send now" />
+
+
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

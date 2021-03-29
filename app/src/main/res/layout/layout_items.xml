@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="items"
+            type="com.example.serviceapp.home.ui.home.pojo.ItemResponse.Datas" />
+    </data>
+    <androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="@dimen/size_55sp"
+                android:layout_height="@dimen/size_55dp"
+                android:layout_centerVertical="true"
+                android:layout_margin="@dimen/padd_10"
+                android:src="@drawable/ic_employee"/>
+
+            <TextView
+                android:id="@+id/text_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{items.name}"
+                android:textSize="@dimen/size_16dp"
+                android:layout_marginLeft="@dimen/size_15dp"
+                android:textColor="@color/purple_200"
+                android:layout_toRightOf="@+id/imageView"
+                android:layout_marginTop="@dimen/padd_10"/>
+            <TextView
+                android:id="@+id/text_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{items.phone}"
+                android:layout_below="@id/text_name"
+                android:textColor="@color/purple_200"
+                android:textSize="@dimen/size_14dp"
+                android:layout_marginLeft="@dimen/size_15dp"
+                android:layout_toRightOf="@+id/imageView"
+                android:layout_marginTop="@dimen/size_5dp"/>
+
+            <TextView
+                android:id="@+id/text_place"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{items.place}"
+                android:textColor="@color/purple_200"
+                android:layout_toRightOf="@+id/imageView"
+                android:layout_below="@id/text_phone"
+                android:textSize="@dimen/size_14dp"
+                android:layout_marginLeft="@dimen/size_15dp"
+                android:layout_marginBottom="@dimen/padd_10"
+                android:layout_marginTop="@dimen/size_5dp"/>
+
+
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>
