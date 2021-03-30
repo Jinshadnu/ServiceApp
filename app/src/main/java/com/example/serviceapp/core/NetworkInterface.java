@@ -1,11 +1,14 @@
 package com.example.serviceapp.core;
 
 import com.example.serviceapp.home.ui.home.pojo.CategoryResponse;
+import com.example.serviceapp.home.ui.home.pojo.CommonResponse;
 import com.example.serviceapp.home.ui.home.pojo.ItemResponse;
 import com.example.serviceapp.home.ui.home.pojo.NewsResponse;
 import com.example.serviceapp.home.ui.home.pojo.SubCategoryResponse;
 
 import retrofit2.Call;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
@@ -23,6 +26,12 @@ public interface NetworkInterface {
 
     @GET("get_datas")
     Call<ItemResponse> getItems(@Query("sub_category_id")String sub_category_id);
+
+    @FormUrlEncoded
+    @POST("add_data")
+    Call<CommonResponse> addItems(@Field("name")String name,@Field("phone")String phone,@Field("place")String place,@Field("sub_category_id")String sub_category_id,@Field("image")String image);
+
+
 
 
 

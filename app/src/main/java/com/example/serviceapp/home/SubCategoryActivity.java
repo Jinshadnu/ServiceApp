@@ -49,50 +49,50 @@ public class SubCategoryActivity extends AppCompatActivity {
             this.onBackPressed();
         });
 
-        setValuesToFields();
+        //setValuesToFields();
         getItems();
     }
 
-    private void setValuesToFields() {
-        List<String> bannerList = new ArrayList<>();
-        bannerList.add("1");
-        bannerList.add("2");
-        bannerList.add("3");
-        bannerList.add("4");
-        subCategoryBinding.rlBanner.setVisibility(View.VISIBLE);
-        subCategoryBinding.vpImage.setAdapter(new BannerAdapter(this, bannerList));
-
-        subCategoryBinding.cpImage.setViewPager(subCategoryBinding.vpImage);
-
-        final float density = getResources().getDisplayMetrics().density;
-
-        //Set circle indicator radius
-        subCategoryBinding.cpImage.setRadius(5 * density);
-
-        subCategoryBinding.vpImage.startAutoScroll();
-        subCategoryBinding.vpImage.setInterval(5000);
-        subCategoryBinding.vpImage.setCycle(true);
-        subCategoryBinding.vpImage.setStopScrollWhenTouch(true);
-
-        // Pager listener over indicator
-        subCategoryBinding.cpImage.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-
-            @Override
-            public void onPageSelected(int position) {
-
-            }
-
-            @Override
-            public void onPageScrolled(int pos, float arg1, int arg2) {
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int pos) {
-
-            }
-        });
-    }
+//    private void setValuesToFields() {
+//        List<String> bannerList = new ArrayList<>();
+//        bannerList.add("1");
+//        bannerList.add("2");
+//        bannerList.add("3");
+//        bannerList.add("4");
+//        subCategoryBinding.rlBanner.setVisibility(View.VISIBLE);
+//        subCategoryBinding.vpImage.setAdapter(new BannerAdapter(this, bannerList));
+//
+//        subCategoryBinding.cpImage.setViewPager(subCategoryBinding.vpImage);
+//
+//        final float density = getResources().getDisplayMetrics().density;
+//
+//        //Set circle indicator radius
+//        subCategoryBinding.cpImage.setRadius(5 * density);
+//
+//        subCategoryBinding.vpImage.startAutoScroll();
+//        subCategoryBinding.vpImage.setInterval(5000);
+//        subCategoryBinding.vpImage.setCycle(true);
+//        subCategoryBinding.vpImage.setStopScrollWhenTouch(true);
+//
+//        // Pager listener over indicator
+//        subCategoryBinding.cpImage.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+//
+//            @Override
+//            public void onPageSelected(int position) {
+//
+//            }
+//
+//            @Override
+//            public void onPageScrolled(int pos, float arg1, int arg2) {
+//
+//            }
+//
+//            @Override
+//            public void onPageScrollStateChanged(int pos) {
+//
+//            }
+//        });
+//    }
 
     private void getItems() {
         if (NetworkUtilities.getNetworkInstance(this).isConnectedToInternet()){
