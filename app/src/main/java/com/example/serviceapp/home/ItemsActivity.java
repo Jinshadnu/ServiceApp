@@ -21,6 +21,7 @@ import com.example.serviceapp.home.adapter.BannerAdapter;
 import com.example.serviceapp.home.ui.home.AddDataActivity;
 import com.example.serviceapp.home.ui.home.adapter.ItemsAdapter;
 import com.example.serviceapp.home.ui.home.viewmodel.ItemviewModel;
+import com.example.serviceapp.home.viewmodel.SubCategoryViewModel;
 import com.example.serviceapp.util.Constants;
 import com.example.serviceapp.util.NetworkUtilities;
 
@@ -41,7 +42,9 @@ public class ItemsActivity extends AppCompatActivity {
  public ActivityItemsBinding itemsBinding;
  public ItemviewModel itemviewModel;
  public ItemsAdapter itemsAdapter;
- public String sub_categoryId;
+ public String sub_categoryId,category_id;
+ public SubCategoryViewModel subCategoryViewModel;
+ public int position;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,12 +52,17 @@ public class ItemsActivity extends AppCompatActivity {
         itemsBinding= DataBindingUtil.setContentView(this,R.layout.activity_items);
 
         itemviewModel=new ViewModelProvider(this).get(ItemviewModel.class);
+        subCategoryViewModel=new ViewModelProvider(this).get(SubCategoryViewModel.class);
+
+
 
         itemsBinding.recyclerItems.setLayoutManager(new LinearLayoutManager(this));
         itemsBinding.recyclerItems.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
         itemsBinding.recyclerItems.setHasFixedSize(true);
 
         sub_categoryId=getIntent().getStringExtra("subcategory_id");
+        category_id=getIntent().getStringExtra("category_id");
+        position=getIntent().getIntExtra("position",0);
 
         itemsBinding.layoutBase.toolbar.setTitle("Items");
 
@@ -88,44 +96,47 @@ public class ItemsActivity extends AppCompatActivity {
     }
 
         private void setValuesToFields() {
-        List<String> bannerList = new ArrayList<>();
-        bannerList.add("1");
-        bannerList.add("2");
-        bannerList.add("3");
-        bannerList.add("4");
-        itemsBinding.rlBanner.setVisibility(View.VISIBLE);
-        itemsBinding.vpImage.setAdapter(new BannerAdapter(this, bannerList));
+        if (NetworkUtilities.getNetworkInstance(this).isConnectedToInternet()){
+            subCategoryViewModel.getItems(category_id).observe(this,subCategoryResponse -> {
+                if (subCategoryResponse.getSub_categories().get(position).getBanner_images() != null && subCategoryResponse.getStatus().equals(Constants.SERVER_RESPONSE_SUCCESS)){
+                    itemsBinding.rlBanner.setVisibility(View.VISIBLE);
+                    itemsBinding.vpImage.setAdapter(new BannerAdapter(this, subCategoryResponse.getSub_categories().get(position).getBanner_images()));
 
-        itemsBinding.cpImage.setViewPager(itemsBinding.vpImage);
+                    itemsBinding.cpImage.setViewPager(itemsBinding.vpImage);
 
-        final float density = getResources().getDisplayMetrics().density;
+                    final float density = getResources().getDisplayMetrics().density;
 
-        //Set circle indicator radius
-        itemsBinding.cpImage.setRadius(5 * density);
+                    //Set circle indicator radius
+                    itemsBinding.cpImage.setRadius(5 * density);
 
-        itemsBinding.vpImage.startAutoScroll();
-        itemsBinding.vpImage.setInterval(5000);
-        itemsBinding.vpImage.setCycle(true);
-        itemsBinding.vpImage.setStopScrollWhenTouch(true);
+                    itemsBinding.vpImage.startAutoScroll();
+                    itemsBinding.vpImage.setInterval(5000);
+                    itemsBinding.vpImage.setCycle(true);
+                    itemsBinding.vpImage.setStopScrollWhenTouch(true);
 
-        // Pager listener over indicator
-        itemsBinding.cpImage.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+                    // Pager listener over indicator
+                    itemsBinding.cpImage.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
-            @Override
-            public void onPageSelected(int position) {
+                        @Override
+                        public void onPageSelected(int position) {
 
-            }
+                        }
 
-            @Override
-            public void onPageScrolled(int pos, float arg1, int arg2) {
+                        @Override
+                        public void onPageScrolled(int pos, float arg1, int arg2) {
 
-            }
+                        }
 
-            @Override
-            public void onPageScrollStateChanged(int pos) {
+                        @Override
+                        public void onPageScrollStateChanged(int pos) {
 
-            }
-        });
+                        }
+                    });
+
+                }
+                           });
+        }
+
    }
 
 }

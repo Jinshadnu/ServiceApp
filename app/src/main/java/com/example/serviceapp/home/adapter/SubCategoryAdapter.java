@@ -24,10 +24,13 @@ import static android.view.LayoutInflater.from;
 public class SubCategoryAdapter extends RecyclerView.Adapter<SubCategoryAdapter.SubViewHolder> {
     public Context context;
     public List<SubCategoryResponse.Sub_categories> subCategories;
+    public String catgory_id;
+    public int postion=0;
 
-    public SubCategoryAdapter(Context context, List<SubCategoryResponse.Sub_categories> subCategories) {
+    public SubCategoryAdapter(Context context, List<SubCategoryResponse.Sub_categories> subCategories,String catgory_id) {
         this.context = context;
         this.subCategories = subCategories;
+        this.catgory_id=catgory_id;
     }
 
 
@@ -47,6 +50,9 @@ public class SubCategoryAdapter extends RecyclerView.Adapter<SubCategoryAdapter.
      holder.subcategoryBinding.relativeServices.setOnClickListener(v -> {
          Intent intent=new Intent(context.getApplicationContext(), ItemsActivity.class);
          intent.putExtra("subcategory_id",subCategory.getSub_category_id());
+         intent.putExtra("category_id",catgory_id);
+         postion=holder.getAdapterPosition();
+         intent.putExtra("position",postion);
          context.startActivity(intent);
      });
     }

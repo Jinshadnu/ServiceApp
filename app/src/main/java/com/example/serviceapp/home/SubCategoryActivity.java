@@ -100,7 +100,7 @@ public class SubCategoryActivity extends AppCompatActivity {
             subCategoryViewModel.getItems(category_id).observe(this,subCategoryResponse -> {
 
                 if (subCategoryResponse != null && subCategoryResponse.getStatus().equals(Constants.SERVER_RESPONSE_SUCCESS)){
-                    subCategoryAdapter=new SubCategoryAdapter(this,subCategoryResponse.getSub_categories());
+                    subCategoryAdapter=new SubCategoryAdapter(this,subCategoryResponse.getSub_categories(),category_id);
                     subCategoryBinding.recyclerSubcategory.setAdapter(subCategoryAdapter);
                 }
 

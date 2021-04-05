@@ -43,8 +43,9 @@ public class HomeActivity extends AppCompatActivity {
                 R.id.nav_home, R.id.nav_advertisement, R.id.nav_feedback,R.id.nav_share)
                 .setDrawerLayout(drawer)
                 .build();
-        navigationView.setItemIconPadding(10);
-        navigationView.setItemIconTintList(null); // <----- HERE
+        navigationView.setItemIconPadding(15);
+        navigationView.setItemIconTintList(null);
+        navigationView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);// <----- HERE
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);

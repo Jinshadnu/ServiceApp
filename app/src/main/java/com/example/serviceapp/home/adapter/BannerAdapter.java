@@ -11,16 +11,17 @@ import androidx.viewpager.widget.PagerAdapter;
 
 import com.bumptech.glide.Glide;
 import com.example.serviceapp.R;
+import com.example.serviceapp.home.ui.home.pojo.SubCategoryResponse;
 
 import java.util.List;
 
 public class BannerAdapter extends PagerAdapter {
 
-    private List<String> images;
+    private List<SubCategoryResponse.Sub_categories.Banner_images> images;
     private LayoutInflater inflater;
     private Context context;
 
-    public BannerAdapter(Context context, List<String> images) {
+    public BannerAdapter(Context context, List<SubCategoryResponse.Sub_categories.Banner_images> images) {
         this.context = context;
         this.images = images;
         inflater = LayoutInflater.from(this.context);
@@ -43,25 +44,9 @@ public class BannerAdapter extends PagerAdapter {
         assert imageLayout != null;
         ImageView imageView = imageLayout.findViewById(R.id.iv_image);
 
-        if (position == 0) {
             Glide.with(context)
-                    .load(R.drawable.advertisements)
+                    .load(images.get(position).getBanner_images())
                     .into(imageView);
-        } else if (position == 1) {
-            Glide.with(context)
-                    .load(R.drawable.advertisements2)
-                    .into(imageView);
-        }
-        else if (position == 2){
-            Glide.with(context)
-                    .load(R.drawable.advertisment3)
-                    .into(imageView);
-        }
-        else {
-            Glide.with(context)
-                    .load(R.drawable.advertisements)
-                    .into(imageView);
-        }
 
         view.addView(imageLayout, 0);
         return imageLayout;
