@@ -48,7 +48,7 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ServiceV
                Intent intent= new Intent(context.getApplicationContext(), NewsActivity.class);
                context.startActivity(intent);
            }
-           if(position == 1){
+           else {
                Intent intent=new Intent(context.getApplicationContext(), SubCategoryActivity.class);
                intent.putExtra("category_id",services.getCategory_id());
                context.startActivity(intent);

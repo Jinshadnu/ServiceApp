@@ -40,6 +40,7 @@
                 android:paddingLeft="@dimen/size_15dp"
                 android:paddingRight="@dimen/size_15dp"
                 android:layout_marginTop="@dimen/size_5dp"
+                android:textStyle="bold"
                 android:textColor="@color/black"
                 android:text="@{subcategory.sub_category_name}"
                 android:textAlignment="center"

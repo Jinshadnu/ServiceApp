@@ -1,24 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_baseline_home_24"
+            app:itemIconTint="@color/purple_700"
+            android:iconTint="@color/white"
             android:title="@string/menu_home" />
         <item
             android:id="@+id/nav_advertisement"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_advertisement"
             android:title="@string/menu_advertise" />
         <item
             android:id="@+id/nav_feedback"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_feedback"
+            android:iconTint="@color/white"
             android:title="@string/menu_feedback" />
         <item
             android:id="@+id/nav_share"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_share"
             android:title="@string/menu_shareapp" />
 
     </group>

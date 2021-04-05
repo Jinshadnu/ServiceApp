@@ -20,7 +20,9 @@ import com.example.serviceapp.R;
 import com.example.serviceapp.databinding.FragmentHomeBinding;
 import com.example.serviceapp.home.adapter.ImageSliderAdapter;
 import com.example.serviceapp.home.ui.home.adapter.ServiceAdapter;
+import com.example.serviceapp.home.ui.home.pojo.BannerResponse;
 import com.example.serviceapp.home.ui.home.pojo.CategoryResponse;
+import com.example.serviceapp.home.ui.home.viewmodel.BannerViewModel;
 import com.example.serviceapp.home.ui.home.viewmodel.ServiceViewModel;
 import com.example.serviceapp.util.Constants;
 import com.example.serviceapp.util.NetworkUtilities;
@@ -34,6 +36,8 @@ public class HomeFragment extends Fragment {
     private HomeViewModel homeViewModel;
     public ServiceAdapter serviceAdapter;
     public ServiceViewModel serviceViewModel;
+    public BannerViewModel bannerViewModel;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -49,6 +53,9 @@ public class HomeFragment extends Fragment {
         serviceViewModel =
                 new ViewModelProvider(this).get(ServiceViewModel.class);
 
+        bannerViewModel =
+                new ViewModelProvider(this).get(BannerViewModel.class);
+
         homeBinding.recyclerServices.setLayoutManager(new GridLayoutManager(getActivity(),3));
         homeBinding.recyclerServices.setHasFixedSize(true);
 
@@ -61,44 +68,48 @@ public class HomeFragment extends Fragment {
 
     private void setValuesToFields() {
         //banner image
-        List<String> bannerList = new ArrayList<>();
-        bannerList.add("1");
-        bannerList.add("2");
-        bannerList.add("3");
-        bannerList.add("4");
-        homeBinding.rlBanner.setVisibility(View.VISIBLE);
-        homeBinding.vpImage.setAdapter(new ImageSliderAdapter(getActivity(), bannerList));
 
-        homeBinding.cpImage.setViewPager(homeBinding.vpImage);
+        if (NetworkUtilities.getNetworkInstance(getActivity()).isConnectedToInternet()){
+            bannerViewModel.getBanners().observe(getActivity(),bannerResponse -> {
+               // List<BannerResponse.Banners> bannerList = new ArrayList<>();
 
-        final float density = getResources().getDisplayMetrics().density;
+                homeBinding.rlBanner.setVisibility(View.VISIBLE);
+                homeBinding.vpImage.setAdapter(new ImageSliderAdapter(getActivity(), bannerResponse.getBanners()));
 
-        //Set circle indicator radius
-        homeBinding.cpImage.setRadius(5 * density);
+                homeBinding.cpImage.setViewPager(homeBinding.vpImage);
 
-        homeBinding.vpImage.startAutoScroll();
-        homeBinding.vpImage.setInterval(5000);
-        homeBinding.vpImage.setCycle(true);
-        homeBinding.vpImage.setStopScrollWhenTouch(true);
+                final float density = getResources().getDisplayMetrics().density;
 
-        // Pager listener over indicator
-        homeBinding.cpImage.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+                //Set circle indicator radius
+                homeBinding.cpImage.setRadius(5 * density);
 
-            @Override
-            public void onPageSelected(int position) {
+                homeBinding.vpImage.startAutoScroll();
+                homeBinding.vpImage.setInterval(5000);
+                homeBinding.vpImage.setCycle(true);
+                homeBinding.vpImage.setStopScrollWhenTouch(true);
 
-            }
+                // Pager listener over indicator
+                homeBinding.cpImage.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
-            @Override
-            public void onPageScrolled(int pos, float arg1, int arg2) {
+                    @Override
+                    public void onPageSelected(int position) {
 
-            }
+                    }
 
-            @Override
-            public void onPageScrollStateChanged(int pos) {
+                    @Override
+                    public void onPageScrolled(int pos, float arg1, int arg2) {
 
-            }
-        });
+                    }
+
+                    @Override
+                    public void onPageScrollStateChanged(int pos) {
+
+                    }
+                });
+            });
+
+        }
+
     }
 
     public void getServices(){

@@ -36,6 +36,13 @@ public class SubCategoryResponse {
         @SerializedName("sub_category_pic")
         public String sub_category_pic;
 
+        @SerializedName("banner_images")
+        public ArrayList<Banner_images> banner_images;
+
+        public ArrayList<Banner_images> getBanner_images() {
+            return banner_images;
+        }
+
         public String getSub_category_id() {
             return sub_category_id;
         }
@@ -46,6 +53,15 @@ public class SubCategoryResponse {
 
         public String getSub_category_pic() {
             return sub_category_pic;
+        }
+
+        public class Banner_images {
+            @SerializedName("banner_images")
+            public String banner_images;
+
+            public String getBanner_images() {
+                return banner_images;
+            }
         }
     }
 

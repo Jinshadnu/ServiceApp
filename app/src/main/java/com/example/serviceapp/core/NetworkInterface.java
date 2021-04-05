@@ -1,5 +1,6 @@
 package com.example.serviceapp.core;
 
+import com.example.serviceapp.home.ui.home.pojo.BannerResponse;
 import com.example.serviceapp.home.ui.home.pojo.CategoryResponse;
 import com.example.serviceapp.home.ui.home.pojo.CommonResponse;
 import com.example.serviceapp.home.ui.home.pojo.ItemResponse;
@@ -31,8 +32,16 @@ public interface NetworkInterface {
     @POST("add_data")
     Call<CommonResponse> addItems(@Field("name")String name,@Field("phone")String phone,@Field("place")String place,@Field("sub_category_id")String sub_category_id,@Field("image")String image);
 
+    @FormUrlEncoded
+    @POST("add_advertisement")
+    Call<CommonResponse> addAdvertisement(@Field("name")String name,@Field("phone_number")String phone,@Field("message")String message);
 
+    @FormUrlEncoded
+    @POST("send_feedback")
+    Call<CommonResponse> sendfeedback(@Field("name")String name,@Field("phone_number")String phone,@Field("feedback")String feedback);
 
+    @GET("get_sliderimages")
+    Call<BannerResponse> getBanners();
 
 
 }

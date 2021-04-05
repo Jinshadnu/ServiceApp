@@ -2,13 +2,21 @@ package com.example.serviceapp.home.ui.feedback;
 
 import android.os.Bundle;
 
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.serviceapp.R;
+import com.example.serviceapp.databinding.FragmentFeedBcakBinding;
+import com.example.serviceapp.home.ui.feedback.viewmodel.FeedbackViewModel;
+import com.example.serviceapp.util.Constants;
+import com.example.serviceapp.util.NetworkUtilities;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +24,10 @@ import com.example.serviceapp.R;
  * create an instance of this fragment.
  */
 public class FeedBcakFragment extends Fragment {
+ public FeedbackViewModel feedbackViewModel;
+ public FragmentFeedBcakBinding feedBcakBinding;
+ public String name,phone,feedback;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -55,12 +67,32 @@ public class FeedBcakFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        feedbackViewModel=new ViewModelProvider((FragmentActivity)this.getActivity()).get(FeedbackViewModel.class);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_feed_bcak, container, false);
+        feedBcakBinding= DataBindingUtil.inflate(inflater,R.layout.fragment_feed_bcak, container, false);
+
+        feedBcakBinding.buttonSend.setOnClickListener(v -> {
+            sendFeedback();
+        });
+        return feedBcakBinding.getRoot();
+    }
+
+    private void sendFeedback() {
+        name=feedBcakBinding.edittextName.getText().toString();
+        phone=feedBcakBinding.edittextPhone.getText().toString();
+        feedback=feedBcakBinding.edittextFeedback.getText().toString();
+
+        if (NetworkUtilities.getNetworkInstance(getActivity()).isConnectedToInternet()){
+            feedbackViewModel.sendFeedback(name,phone,feedback).observe(getActivity(),commonResponse -> {
+                if (commonResponse != null && commonResponse.getStatus().equals(Constants.SERVER_RESPONSE_SUCCESS)) {
+                    Toast.makeText(getActivity(),commonResponse.getMessage(),Toast.LENGTH_LONG).show();
+                }
+            });
+        }
     }
 }
