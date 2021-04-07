@@ -45,6 +45,7 @@ public class ItemsActivity extends AppCompatActivity {
  public String sub_categoryId,category_id;
  public SubCategoryViewModel subCategoryViewModel;
  public int position;
+ public BannerAdapter bannerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,7 +101,8 @@ public class ItemsActivity extends AppCompatActivity {
             subCategoryViewModel.getItems(category_id).observe(this,subCategoryResponse -> {
                 if (subCategoryResponse.getSub_categories().get(position).getBanner_images() != null && subCategoryResponse.getStatus().equals(Constants.SERVER_RESPONSE_SUCCESS)){
                     itemsBinding.rlBanner.setVisibility(View.VISIBLE);
-                    itemsBinding.vpImage.setAdapter(new BannerAdapter(this, subCategoryResponse.getSub_categories().get(position).getBanner_images()));
+                    bannerAdapter=new BannerAdapter(this,subCategoryResponse.getSub_categories().get(position).getBanner_images());
+                    itemsBinding.vpImage.setAdapter(bannerAdapter);
 
                     itemsBinding.cpImage.setViewPager(itemsBinding.vpImage);
 
@@ -133,6 +135,9 @@ public class ItemsActivity extends AppCompatActivity {
                         }
                     });
 
+                }
+                if(bannerAdapter.getCount() == 0){
+                 itemsBinding.rlBanner.setVisibility(View.GONE);
                 }
                            });
         }

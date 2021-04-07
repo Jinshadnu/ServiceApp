@@ -9,7 +9,8 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white">
+        android:background="@color/white"
+        xmlns:bind="http://schemas.android.com/tools">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -17,11 +18,12 @@
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="@dimen/size_55sp"
-                android:layout_height="@dimen/size_55dp"
+                android:layout_width="@dimen/size_60dp"
+                android:layout_height="@dimen/size_60dp"
                 android:layout_centerVertical="true"
                 android:layout_margin="@dimen/padd_10"
-                android:src="@drawable/ic_employee"/>
+                bind:item_pic="@{items.image}"
+                />
 
             <TextView
                 android:id="@+id/text_name"
@@ -32,6 +34,8 @@
                 android:layout_marginLeft="@dimen/size_15dp"
                 android:textColor="@color/purple_200"
                 android:layout_toRightOf="@+id/imageView"
+                android:textStyle="bold"
+                android:fontFamily="@font/amaranth"
                 android:layout_marginTop="@dimen/padd_10"/>
             <TextView
                 android:id="@+id/text_phone"
