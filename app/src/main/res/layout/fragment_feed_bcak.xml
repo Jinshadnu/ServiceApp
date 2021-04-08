@@ -5,6 +5,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:background="@color/white"
         tools:context=".home.ui.advertise.AdvertiseFragment">
 
         <!-- TODO: Update blank fragment layout -->
@@ -52,6 +53,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/editext_background"
                     android:padding="@dimen/padd_10"
+                    android:maxLength="10"
                     android:layout_marginTop="@dimen/size_15dp"
                     android:drawableLeft="@drawable/ic_baseline_phone_android_24"
                     android:drawablePadding="@dimen/size_8dp"

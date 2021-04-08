@@ -27,4 +27,5 @@
         android:name="com.example.serviceapp.home.ui.share.ShareFragment"
         android:label="@string/menu_shareapp"
         tools:layout="@layout/fragment_share" />
+
 </navigation>

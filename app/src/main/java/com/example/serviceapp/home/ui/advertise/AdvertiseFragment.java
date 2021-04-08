@@ -19,6 +19,9 @@ import com.example.serviceapp.home.ui.home.viewmodel.AdViewModel;
 import com.example.serviceapp.util.Constants;
 import com.example.serviceapp.util.NetworkUtilities;
 
+import static android.text.TextUtils.isEmpty;
+import static java.util.Objects.requireNonNull;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link AdvertiseFragment#newInstance} factory method to
@@ -82,17 +85,56 @@ public class AdvertiseFragment extends Fragment {
         advertiseBinding= DataBindingUtil.inflate(inflater,R.layout.fragment_advertise, container, false);
 
        advertiseBinding.button.setOnClickListener(v -> {
-           addAdvertisement();
+           if (validateField()){
+               addAdvertisement();
+           }
+
        });
 
         return advertiseBinding.getRoot();
 
     }
+    public boolean validateField(){
+        name=requireNonNull(advertiseBinding.edittextName.getText().toString());
+        message=requireNonNull(advertiseBinding.edittextMessage.getText().toString());
+        phone=requireNonNull(advertiseBinding.edittextPhone.getText().toString());
+
+
+        if (isEmpty(name)){
+            advertiseBinding.edittextName.requestFocus();
+            advertiseBinding.edittextName.setError("Please enter your name");
+            return false;
+        }
+        if (isEmpty(message)){
+            advertiseBinding.edittextMessage.requestFocus();
+            advertiseBinding.edittextMessage.setError("Please enter your message");
+            return false;
+        }
+        if (isEmpty(phone)){
+            advertiseBinding.edittextPhone.requestFocus();
+            advertiseBinding.edittextPhone.setError("Please enter your phone number");
+            return false;
+        }
+        if (phone.length()<10){
+            advertiseBinding.edittextPhone.requestFocus();
+            advertiseBinding.edittextPhone.setError("Please enter 10 digit phone number");
+            return false;
+        }
+        if (name.length()<3){
+            advertiseBinding.edittextName.requestFocus();
+            advertiseBinding.edittextName.setError("Please enter your name");
+            return false;
+        }
+        if (message.length()<6){
+            advertiseBinding.edittextName.requestFocus();
+            advertiseBinding.edittextName.setError("Please enter your name");
+            return false;
+        }
+        return true;
+    }
+
 
     public void addAdvertisement() {
-        name=advertiseBinding.edittextName.getText().toString();
-        phone=advertiseBinding.edittextPhone.getText().toString();
-        message=advertiseBinding.edittextMessage.getText().toString();
         if (NetworkUtilities.getNetworkInstance(getActivity()).isConnectedToInternet()){
             adViewModel.addAdvertsement(name,phone,message).observe(getActivity(),commonResponse -> {
                 if (commonResponse != null && commonResponse.getStatus().equals(Constants.SERVER_RESPONSE_SUCCESS)){

@@ -33,6 +33,7 @@ import static android.content.Intent.ACTION_GET_CONTENT;
 import static android.content.Intent.createChooser;
 import static android.graphics.Bitmap.CompressFormat.PNG;
 import static android.provider.MediaStore.Images.Media.getBitmap;
+import static android.text.TextUtils.isEmpty;
 import static android.util.Base64.DEFAULT;
 import static android.util.Base64.encodeToString;
 import static android.view.View.VISIBLE;
@@ -90,13 +91,45 @@ public class AddDataActivity extends AppCompatActivity {
         });
 
         addDataBinding.button2.setOnClickListener(v -> {
-            encodeDocuments();
+            if(validateField()){
+                encodeDocuments();
+            }
+
         });
     }
 
     public boolean validateField(){
+        name=requireNonNull(addDataBinding.edittextName.getText().toString());
+        place=requireNonNull(addDataBinding.edittextPlace.getText().toString());
+        phone=requireNonNull(addDataBinding.edittextPhone.getText().toString());
 
-        return false;
+
+        if (isEmpty(name)){
+            addDataBinding.edittextName.requestFocus();
+            addDataBinding.edittextName.setError("Please enter your name");
+            return false;
+        }
+        if (isEmpty(place)){
+            addDataBinding.edittextPlace.requestFocus();
+            addDataBinding.edittextPlace.setError("Please enter your place");
+            return false;
+        }
+        if (isEmpty(phone)){
+            addDataBinding.edittextPhone.requestFocus();
+            addDataBinding.edittextPhone.setError("Please enter your phone number");
+            return false;
+        }
+        if (phone.length()<10){
+            addDataBinding.edittextPhone.requestFocus();
+            addDataBinding.edittextPhone.setError("Please enter 10 digit phone number");
+            return false;
+        }
+        if (name.length()<3){
+            addDataBinding.edittextName.requestFocus();
+            addDataBinding.edittextName.setError("Please enter your name");
+            return false;
+        }
+        return true;
     }
 
     @Override
@@ -156,20 +189,18 @@ public class AddDataActivity extends AppCompatActivity {
         return encodeToString(b, DEFAULT);
     }
     public void encodeDocuments(){
-          name=addDataBinding.edittextName.getText().toString();
-          place=addDataBinding.edittextPlace.getText().toString();
-          phone=addDataBinding.edittextPhone.getText().toString();
-
                 profileImage =encodeToBase64(profileImageBitmap);
                 if (NetworkUtilities.getNetworkInstance(this).isConnectedToInternet()){
                   itemviewModel.addItems(name,phone,place,subcategory_id,profileImage).observe(this,commonResponse -> {
                       if (commonResponse != null && commonResponse.getStatus().equals(Constants.SERVER_RESPONSE_SUCCESS)){
                           Toast.makeText(this, commonResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                          finish();
                       }
                   });
                 }
 
     }
+
 
 
 

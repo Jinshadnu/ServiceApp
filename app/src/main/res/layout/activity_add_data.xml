@@ -7,6 +7,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         tools:context=".home.ui.home.AddDataActivity"
         android:layout_height="match_parent"
+        android:background="@color/white"
         android:layout_width="match_parent">
 
         <RelativeLayout
@@ -26,7 +27,7 @@
                 android:layout_below="@+id/layoutBase"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/size_15dp"
-                android:src="@drawable/vingcozlogo"/>
+                android:src="@drawable/vadakked_logo"/>
 
             <EditText
                 android:id="@+id/edittext_name"
@@ -63,6 +64,7 @@
                 android:background="@drawable/editext_background"
                 android:layout_below="@id/edittext_place"
                 android:layout_marginLeft="@dimen/size_15dp"
+                android:maxLength="10"
                 android:layout_marginRight="@dimen/size_15dp"
                 android:padding="@dimen/padd_10"
                 android:layout_marginTop="@dimen/size_15dp"
