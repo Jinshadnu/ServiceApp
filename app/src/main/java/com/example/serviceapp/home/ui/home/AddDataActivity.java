@@ -5,12 +5,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.ClipData;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Message;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.serviceapp.R;
@@ -52,8 +59,13 @@ public class AddDataActivity extends AppCompatActivity {
     public String subcategory_id;
     public String name,place,phone;
     public ItemviewModel itemviewModel;
+    public ProgressDialog progressDialog;
+    public LayoutInflater li;
+    public View layout;
 
 
+
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,6 +108,11 @@ public class AddDataActivity extends AppCompatActivity {
             }
 
         });
+        li = getLayoutInflater();
+        //Getting the View object as defined in the customtoast.xml file
+        layout = li.inflate(R.layout.custom_toast,(ViewGroup) findViewById(R.id.text_message));
+
+
     }
 
     public boolean validateField(){
@@ -109,6 +126,12 @@ public class AddDataActivity extends AppCompatActivity {
             addDataBinding.edittextName.setError("Please enter your name");
             return false;
         }
+        if (name.length()<3){
+            addDataBinding.edittextName.requestFocus();
+            addDataBinding.edittextName.setError("Please enter your name");
+            return false;
+        }
+
         if (isEmpty(place)){
             addDataBinding.edittextPlace.requestFocus();
             addDataBinding.edittextPlace.setError("Please enter your place");
@@ -124,11 +147,7 @@ public class AddDataActivity extends AppCompatActivity {
             addDataBinding.edittextPhone.setError("Please enter 10 digit phone number");
             return false;
         }
-        if (name.length()<3){
-            addDataBinding.edittextName.requestFocus();
-            addDataBinding.edittextName.setError("Please enter your name");
-            return false;
-        }
+
         return true;
     }
 
@@ -191,9 +210,19 @@ public class AddDataActivity extends AppCompatActivity {
     public void encodeDocuments(){
                 profileImage =encodeToBase64(profileImageBitmap);
                 if (NetworkUtilities.getNetworkInstance(this).isConnectedToInternet()){
+                    progressDialog=new ProgressDialog(this);
+                    progressDialog.setMessage("Loading....");
+                    progressDialog.show();
                   itemviewModel.addItems(name,phone,place,subcategory_id,profileImage).observe(this,commonResponse -> {
+                      progressDialog.dismiss();
                       if (commonResponse != null && commonResponse.getStatus().equals(Constants.SERVER_RESPONSE_SUCCESS)){
-                          Toast.makeText(this, commonResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                          //Creating the Toast object
+                          Toast toast = new Toast(getApplicationContext());
+                          toast.setDuration(Toast.LENGTH_SHORT);
+                          toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+                          ((TextView) layout.findViewById(R.id.text_message)).setText(commonResponse.getMessage());
+                          toast.setView(layout);//setting the view of custom toast layout
+                          toast.show();
                           finish();
                       }
                   });

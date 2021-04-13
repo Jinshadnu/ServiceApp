@@ -15,11 +15,11 @@
             android:id="@+id/nav_advertisement"
             android:icon="@drawable/ic_advertisement"
             android:title="@string/menu_advertise" />
-        <item
-            android:id="@+id/nav_feedback"
-            android:icon="@drawable/ic_feedback"
-            android:iconTint="@color/white"
-            android:title="@string/menu_feedback" />
+<!--        <item-->
+<!--            android:id="@+id/nav_feedback"-->
+<!--            android:icon="@drawable/ic_feedback"-->
+<!--            android:iconTint="@color/white"-->
+<!--            android:title="@string/menu_feedback" />-->
         <item
             android:id="@+id/nav_share"
             android:icon="@drawable/ic_share"

@@ -20,7 +20,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/imageView"
                 android:layout_width="@dimen/size_180dp"
                 android:layout_height="@dimen/size_150dp"
@@ -53,7 +53,7 @@
                 android:layout_marginRight="@dimen/size_15dp"
                 android:padding="@dimen/padd_10"
                 android:layout_marginTop="@dimen/size_15dp"
-                android:drawableLeft="@drawable/ic_baseline_phone_android_24"
+                android:drawableLeft="@drawable/ic_baseline_location_on_24"
                 android:drawablePadding="@dimen/padd_10"
                 android:hint="Place"/>
 
@@ -68,7 +68,7 @@
                 android:layout_marginRight="@dimen/size_15dp"
                 android:padding="@dimen/padd_10"
                 android:layout_marginTop="@dimen/size_15dp"
-                android:drawableLeft="@drawable/ic_baseline_person_24"
+                android:drawableLeft="@drawable/ic_baseline_phone_android_24"
                 android:drawablePadding="@dimen/padd_10"
                 android:hint="Phone"/>
 

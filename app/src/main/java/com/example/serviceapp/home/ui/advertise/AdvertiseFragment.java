@@ -1,5 +1,6 @@
 package com.example.serviceapp.home.ui.advertise;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 
@@ -8,9 +9,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.serviceapp.R;
@@ -34,6 +37,8 @@ public class AdvertiseFragment extends Fragment {
     public AdViewModel adViewModel;
     public String name,message,phone;
     public Context context;
+    public View layout;
+
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -78,13 +83,22 @@ public class AdvertiseFragment extends Fragment {
         adViewModel=new ViewModelProvider((FragmentActivity)this.getActivity()).get(AdViewModel.class);
     }
 
+    @SuppressLint("WrongViewCast")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         advertiseBinding= DataBindingUtil.inflate(inflater,R.layout.fragment_advertise, container, false);
 
-       advertiseBinding.button.setOnClickListener(v -> {
+       inflater= getLayoutInflater();
+       layout = inflater.inflate(R.layout.custom_toast, (ViewGroup) getActivity().findViewById(R.id.text_message));
+        //Getting the View object as defined in the customtoast.xml file
+
+
+        //Creating the Toast object
+
+
+        advertiseBinding.button.setOnClickListener(v -> {
            if (validateField()){
                addAdvertisement();
            }
@@ -100,7 +114,12 @@ public class AdvertiseFragment extends Fragment {
         phone=requireNonNull(advertiseBinding.edittextPhone.getText().toString());
 
 
-        if (isEmpty(name)){
+//        if (isEmpty(name)){
+//            advertiseBinding.edittextName.requestFocus();
+//            advertiseBinding.edittextName.setError("Please enter your name");
+//            return false;
+//        }
+        if (name.length()<3){
             advertiseBinding.edittextName.requestFocus();
             advertiseBinding.edittextName.setError("Please enter your name");
             return false;
@@ -120,14 +139,10 @@ public class AdvertiseFragment extends Fragment {
             advertiseBinding.edittextPhone.setError("Please enter 10 digit phone number");
             return false;
         }
-        if (name.length()<3){
-            advertiseBinding.edittextName.requestFocus();
-            advertiseBinding.edittextName.setError("Please enter your name");
-            return false;
-        }
+
         if (message.length()<6){
-            advertiseBinding.edittextName.requestFocus();
-            advertiseBinding.edittextName.setError("Please enter your name");
+            advertiseBinding.edittextMessage.requestFocus();
+            advertiseBinding.edittextMessage.setError("Please enter your name");
             return false;
         }
         return true;
@@ -138,7 +153,18 @@ public class AdvertiseFragment extends Fragment {
         if (NetworkUtilities.getNetworkInstance(getActivity()).isConnectedToInternet()){
             adViewModel.addAdvertsement(name,phone,message).observe(getActivity(),commonResponse -> {
                 if (commonResponse != null && commonResponse.getStatus().equals(Constants.SERVER_RESPONSE_SUCCESS)){
-                    Toast.makeText(getActivity(),commonResponse.getMessage(),Toast.LENGTH_LONG).show();
+                   // Toast.makeText(getActivity(),commonResponse.getMessage(),Toast.LENGTH_LONG).show();
+
+                    Toast toast = new Toast(getActivity());
+                    toast.setDuration(Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+                    ((TextView) layout.findViewById(R.id.text_message)).setText(commonResponse.getMessage());
+                    toast.setView(layout);//setting the view of custom toast layout
+                    toast.show();
+
+                    advertiseBinding.edittextName.setText(" ");
+                    advertiseBinding.edittextPhone.setText(" ");
+                    advertiseBinding.edittextMessage.setText(" ");
                 }
             });
         }

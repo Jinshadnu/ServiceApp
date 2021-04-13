@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
@@ -12,11 +12,22 @@
         <ImageView
             android:id="@+id/lottie_layer_name"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/size_300dp"
-            android:layout_centerInParent="true"
+            android:layout_height="match_parent"
             android:scaleType="fitXY"
             android:src="@drawable/vadakked_logo"
             />
+
+<!--        <ImageView-->
+<!--            android:id="@+id/imageView_logo"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="@dimen/size_80dp"-->
+<!--            android:layout_marginLeft="@dimen/size_10dp"-->
+<!--            android:layout_marginRight="@dimen/size_30dp"-->
+<!--            android:layout_marginTop="@dimen/size_50dp"-->
+<!--            android:layout_alignParentRight="true"-->
+<!--            android:layout_alignParentBottom="true"-->
+<!--            android:src="@drawable/vingz_logo" />-->
+
 
     </RelativeLayout>
 </layout>

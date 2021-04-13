@@ -1,9 +1,7 @@
-package com.example.serviceapp.home.ui.share;
+package com.example.serviceapp.home.ui.contact;
 
-import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -11,15 +9,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.serviceapp.R;
-import com.example.serviceapp.databinding.FragmentShareBinding;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link ShareFragment#newInstance} factory method to
+ * Use the {@link ContactFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ShareFragment extends Fragment {
-    public FragmentShareBinding shareBinding;
+public class ContactFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -30,7 +26,7 @@ public class ShareFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public ShareFragment() {
+    public ContactFragment() {
         // Required empty public constructor
     }
 
@@ -40,11 +36,11 @@ public class ShareFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment ShareFragment.
+     * @return A new instance of fragment ContactFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ShareFragment newInstance(String param1, String param2) {
-        ShareFragment fragment = new ShareFragment();
+    public static ContactFragment newInstance(String param1, String param2) {
+        ContactFragment fragment = new ContactFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -65,17 +61,6 @@ public class ShareFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        shareBinding= DataBindingUtil.inflate(inflater,R.layout.fragment_share, container, false);
-
-        shareBinding.cardShare.setOnClickListener(v -> {
-            String shareBody = getString(R.string.share_content);
-            Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
-            sharingIntent.setType("text/plain");
-            sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Share to friends");
-            sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
-            startActivity(Intent.createChooser(sharingIntent, "Share to"));
-        });
-
-        return shareBinding.getRoot();
+        return inflater.inflate(R.layout.fragment_contact, container, false);
     }
 }

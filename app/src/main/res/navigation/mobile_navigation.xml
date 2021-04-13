@@ -17,15 +17,20 @@
         android:label="@string/menu_advertise"
         tools:layout="@layout/fragment_advertise" />
 
-    <fragment
-        android:id="@+id/nav_feedback"
-        android:name="com.example.serviceapp.home.ui.feedback.FeedBcakFragment"
-        android:label="@string/menu_shareapp"
-        tools:layout="@layout/fragment_feed_bcak" />
+<!--    <fragment-->
+<!--        android:id="@+id/nav_feedback"-->
+<!--        android:name="com.example.serviceapp.home.ui.feedback.FeedBcakFragment"-->
+<!--        android:label="@string/menu_shareapp"-->
+<!--        tools:layout="@layout/fragment_feed_bcak" />-->
     <fragment
         android:id="@+id/nav_share"
         android:name="com.example.serviceapp.home.ui.share.ShareFragment"
         android:label="@string/menu_shareapp"
         tools:layout="@layout/fragment_share" />
+    <fragment
+        android:id="@+id/nav_whatsapp"
+        android:name="com.example.serviceapp.home.ui.contact.ContactFragment"
+        android:label="@string/menu_contactus"
+        tools:layout="@layout/fragment_contact" />
 
 </navigation>

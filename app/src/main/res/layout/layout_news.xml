@@ -9,11 +9,8 @@
         android:layout_width="match_parent"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         app:cardBackgroundColor="@color/white"
-        android:layout_marginLeft="@dimen/size_10dp"
-        android:layout_marginRight="@dimen/padd_10"
         android:layout_marginTop="@dimen/size_2dp"
         android:layout_marginBottom="@dimen/size_2dp"
-        app:cardCornerRadius="@dimen/size_5dp"
         app:cardElevation="@dimen/padd_10"
         android:layout_height="@dimen/size_100dp">
 
@@ -25,14 +22,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{news.heading}"
-                android:layout_marginLeft="@dimen/size_15dp"
+                android:layout_marginLeft="@dimen/size_8dp"
+                android:textStyle="bold"
+                android:lines="3"
+                android:layout_toLeftOf="@+id/imageView"
                 android:layout_centerVertical="true"
                 android:textColor="@color/purple_200"
-                android:textSize="@dimen/size_16dp"
+                android:textSize="@dimen/size_15dp"
                 />
 
             <ImageView
-                android:layout_width="@dimen/size_150dp"
+                android:id="@+id/imageView"
+                android:layout_width="@dimen/size_130dp"
                 android:layout_height="match_parent"
                 android:src="@drawable/advertisment1"
                 android:layout_centerVertical="true"

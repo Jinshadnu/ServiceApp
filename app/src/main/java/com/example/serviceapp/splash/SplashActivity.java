@@ -26,8 +26,10 @@ public class SplashActivity extends AppCompatActivity {
         splashBinding= DataBindingUtil.setContentView(this,R.layout.activity_splash);
 
         Animation animation= AnimationUtils.loadAnimation(this,R.anim.mytransition);
+            //Animation animation1= AnimationUtils.loadAnimation(this,R.anim.left_animation);
 
         splashBinding.lottieLayerName.startAnimation(animation);
+        //splashBinding.imageViewLogo.startAnimation(animation1);
 
         new Handler().postDelayed(new Runnable() {
             @Override
