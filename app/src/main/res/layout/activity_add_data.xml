@@ -58,11 +58,26 @@
                 android:hint="Place"/>
 
             <EditText
-                android:id="@+id/edittext_phone"
+                android:id="@+id/edittext_pincode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/editext_background"
                 android:layout_below="@id/edittext_place"
+                android:layout_marginLeft="@dimen/size_15dp"
+                android:layout_marginRight="@dimen/size_15dp"
+                android:padding="@dimen/padd_10"
+                android:maxLength="6"
+                android:layout_marginTop="@dimen/size_15dp"
+                android:drawableLeft="@drawable/ic_baseline_location_on_24"
+                android:drawablePadding="@dimen/padd_10"
+                android:hint="Pincode"/>
+
+            <EditText
+                android:id="@+id/edittext_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/editext_background"
+                android:layout_below="@id/edittext_pincode"
                 android:layout_marginLeft="@dimen/size_15dp"
                 android:maxLength="10"
                 android:layout_marginRight="@dimen/size_15dp"

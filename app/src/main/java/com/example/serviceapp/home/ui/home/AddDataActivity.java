@@ -57,7 +57,7 @@ public class AddDataActivity extends AppCompatActivity {
     private Bitmap profileImageBitmap;
     public String profileImage;
     public String subcategory_id;
-    public String name,place,phone;
+    public String name,place,phone,pincode;
     public ItemviewModel itemviewModel;
     public ProgressDialog progressDialog;
     public LayoutInflater li;
@@ -119,6 +119,7 @@ public class AddDataActivity extends AppCompatActivity {
         name=requireNonNull(addDataBinding.edittextName.getText().toString());
         place=requireNonNull(addDataBinding.edittextPlace.getText().toString());
         phone=requireNonNull(addDataBinding.edittextPhone.getText().toString());
+        pincode=requireNonNull(addDataBinding.edittextPincode.getText().toString());
 
 
         if (isEmpty(name)){
@@ -137,6 +138,17 @@ public class AddDataActivity extends AppCompatActivity {
             addDataBinding.edittextPlace.setError("Please enter your place");
             return false;
         }
+        if (isEmpty(pincode)){
+            addDataBinding.edittextPincode.requestFocus();
+            addDataBinding.edittextPincode.setError("Please enter your pincode");
+            return false;
+        }
+        if (pincode.length()<6){
+            addDataBinding.edittextPincode.requestFocus();
+            addDataBinding.edittextPincode.setError("Please enter 6 digit pincode");
+            return false;
+        }
+
         if (isEmpty(phone)){
             addDataBinding.edittextPhone.requestFocus();
             addDataBinding.edittextPhone.setError("Please enter your phone number");
@@ -213,7 +225,7 @@ public class AddDataActivity extends AppCompatActivity {
                     progressDialog=new ProgressDialog(this);
                     progressDialog.setMessage("Loading....");
                     progressDialog.show();
-                  itemviewModel.addItems(name,phone,place,subcategory_id,profileImage).observe(this,commonResponse -> {
+                  itemviewModel.addItems(name,phone,place,subcategory_id,profileImage,pincode).observe(this,commonResponse -> {
                       progressDialog.dismiss();
                       if (commonResponse != null && commonResponse.getStatus().equals(Constants.SERVER_RESPONSE_SUCCESS)){
                           //Creating the Toast object

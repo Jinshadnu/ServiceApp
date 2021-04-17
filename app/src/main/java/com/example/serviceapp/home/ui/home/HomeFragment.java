@@ -76,12 +76,12 @@ public class HomeFragment extends Fragment {
                 homeBinding.rlBanner.setVisibility(View.VISIBLE);
                 homeBinding.vpImage.setAdapter(new ImageSliderAdapter(getActivity(), bannerResponse.getBanners()));
 
-                homeBinding.cpImage.setViewPager(homeBinding.vpImage);
+                //homeBinding.cpImage.setViewPager(homeBinding.vpImage);
 
                 final float density = getResources().getDisplayMetrics().density;
 
                 //Set circle indicator radius
-                homeBinding.cpImage.setRadius(5 * density);
+                //homeBinding.cpImage.setRadius(5 * density);
 
                 homeBinding.vpImage.startAutoScroll();
                 homeBinding.vpImage.setInterval(5000);
@@ -89,24 +89,24 @@ public class HomeFragment extends Fragment {
                 homeBinding.vpImage.setStopScrollWhenTouch(true);
 
                 // Pager listener over indicator
-                homeBinding.cpImage.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-
-                    @Override
-                    public void onPageSelected(int position) {
-
-                    }
-
-                    @Override
-                    public void onPageScrolled(int pos, float arg1, int arg2) {
-
-                    }
-
-                    @Override
-                    public void onPageScrollStateChanged(int pos) {
-
-                    }
-                });
-            });
+//               // homeBinding.cpImage.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+//
+//                    @Override
+//                    public void onPageSelected(int position) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onPageScrolled(int pos, float arg1, int arg2) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onPageScrollStateChanged(int pos) {
+//
+//                    }
+//                });
+           });
 
         }
 

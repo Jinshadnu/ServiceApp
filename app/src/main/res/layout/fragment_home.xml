@@ -26,19 +26,19 @@
                     android:layout_height="fill_parent"
                     tools:ignore="MissingClass"/>
 
-                <com.viewpagerindicator.CirclePageIndicator
-                    android:id="@+id/cp_image"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true"
-                    android:gravity="bottom"
-                    android:padding="10dip"
-                    app:centered="true"
-                    app:fillColor="@color/purple_200"
-                    app:pageColor="@android:color/white"
-                    app:snap="false"
-                    tools:ignore="MissingClass" />
+<!--                <com.viewpagerindicator.CirclePageIndicator-->
+<!--                    android:id="@+id/cp_image"-->
+<!--                    android:layout_width="fill_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_alignParentBottom="true"-->
+<!--                    android:layout_centerHorizontal="true"-->
+<!--                    android:gravity="bottom"-->
+<!--                    android:padding="10dip"-->
+<!--                    app:centered="true"-->
+<!--                    app:fillColor="@color/purple_200"-->
+<!--                    app:pageColor="@android:color/white"-->
+<!--                    app:snap="false"-->
+<!--                    tools:ignore="MissingClass" />-->
 
 
             </RelativeLayout>

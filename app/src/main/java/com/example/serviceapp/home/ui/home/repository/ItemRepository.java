@@ -42,11 +42,11 @@ public class ItemRepository {
         return mutableLiveData;
     }
 
-    public LiveData<CommonResponse> addItems(String name,String phone,String place,String subcategory_id,String image){
+    public LiveData<CommonResponse> addItems(String name,String phone,String place,String subcategory_id,String image,String pincode){
         MutableLiveData  mutableLiveData=new MutableLiveData();
 
         networkInterface=NetworKService.getRetrofitInstance().create(NetworkInterface.class);
-        Call<CommonResponse> responseCall = networkInterface.addItems(name,phone,place,subcategory_id,image);
+        Call<CommonResponse> responseCall = networkInterface.addItems(name,phone,place,subcategory_id,image,pincode);
         responseCall.enqueue(new Callback<CommonResponse>() {
             @Override
             public void onResponse(Call<CommonResponse> call, Response<CommonResponse> response) {

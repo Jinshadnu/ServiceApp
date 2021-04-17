@@ -30,7 +30,7 @@ public interface NetworkInterface {
 
     @FormUrlEncoded
     @POST("add_data")
-    Call<CommonResponse> addItems(@Field("name")String name,@Field("phone")String phone,@Field("place")String place,@Field("sub_category_id")String sub_category_id,@Field("image")String image);
+    Call<CommonResponse> addItems(@Field("name")String name,@Field("phone")String phone,@Field("place")String place,@Field("sub_category_id")String sub_category_id,@Field("image")String image,@Field("pincode")String pincode);
 
     @FormUrlEncoded
     @POST("add_advertisement")

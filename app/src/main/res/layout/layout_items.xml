@@ -13,13 +13,14 @@
         xmlns:bind="http://schemas.android.com/tools">
 
         <RelativeLayout
+            android:id="@+id/relative_items"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="@dimen/size_60dp"
-                android:layout_height="@dimen/size_60dp"
+                android:layout_width="@dimen/size_70dp"
+                android:layout_height="@dimen/size_70dp"
                 android:layout_centerVertical="true"
                 android:layout_margin="@dimen/padd_10"
                 bind:item_pic="@{items.image}"
@@ -57,6 +58,17 @@
                 android:textColor="@color/purple_200"
                 android:layout_toRightOf="@+id/imageView"
                 android:layout_below="@id/text_phone"
+                android:textSize="@dimen/size_14dp"
+                android:layout_marginLeft="@dimen/size_15dp"
+                android:layout_marginTop="@dimen/size_5dp"/>
+            <TextView
+                android:id="@+id/text_pincode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{items.pincode}"
+                android:textColor="@color/purple_200"
+                android:layout_toRightOf="@+id/imageView"
+                android:layout_below="@id/text_place"
                 android:textSize="@dimen/size_14dp"
                 android:layout_marginLeft="@dimen/size_15dp"
                 android:layout_marginBottom="@dimen/padd_10"

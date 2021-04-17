@@ -34,9 +34,16 @@ public class ItemResponse {
 
         @SerializedName("place")
         public String place;
+
+        @SerializedName("pincode")
+        public String pincode;
         
         @SerializedName("image")
         public String image;
+
+        public String getPincode() {
+            return pincode;
+        }
 
         public String getImage() {
             return image;

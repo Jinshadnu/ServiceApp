@@ -81,6 +81,24 @@ public class HomeActivity extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_updates:
+                Intent playStore = new Intent(Intent.ACTION_VIEW, Uri.parse("https://https://play.google.com/store/apps/details?id=com.vingcoz.laundryapp"));
+                startActivity(playStore);
+                return (true);
+            case R.id.action_privacy:
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://vingcoz.com/mobile_app/privacypolicy/kuruvilla_dental_clinic_privacy_policy.html"));
+                startActivity(browserIntent);
+                return (true);
+            case R.id.action_exit:
+                finish();
+                return (true);
+        }
+        return (super.onOptionsItemSelected(item));
+    }
+
     public void openFragment(Fragment fragment, String tag){
         FragmentManager fragmentManager=getSupportFragmentManager();
         FragmentTransaction transaction=fragmentManager.beginTransaction();

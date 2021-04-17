@@ -18,7 +18,7 @@ public class ItemviewModel extends ViewModel {
         return itemRepository.getItems(sub_category_id);
     }
 
-    public LiveData<CommonResponse> addItems(String name,String phone,String place,String subcategory_id,String image){
-        return itemRepository.addItems(name,phone,place,subcategory_id,image);
+    public LiveData<CommonResponse> addItems(String name,String phone,String place,String subcategory_id,String image,String pincode){
+        return itemRepository.addItems(name,phone,place,subcategory_id,image,pincode);
     }
 }
