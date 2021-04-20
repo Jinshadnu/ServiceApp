@@ -9,12 +9,12 @@
         tools:context=".splash.SplashActivity">
 
 
-        <ImageView
+        <pl.droidsonroids.gif.GifImageView
             android:id="@+id/lottie_layer_name"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitXY"
-            android:src="@drawable/vadakked_logo"
+            android:src="@drawable/vadakkekadsplash"
             />
 
 <!--        <ImageView-->

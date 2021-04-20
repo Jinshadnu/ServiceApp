@@ -1,6 +1,7 @@
 package com.example.serviceapp.home.ui.home.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.serviceapp.R;
 import com.example.serviceapp.databinding.LayoutNewsBinding;
+import com.example.serviceapp.home.NewsDetailsActivity;
 import com.example.serviceapp.home.pojo.News;
 import com.example.serviceapp.home.ui.home.pojo.NewsResponse;
 
@@ -36,6 +38,13 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsVieHolder>
     public void onBindViewHolder(@NonNull NewsVieHolder holder, int position) {
      NewsResponse.Newses news=newsList.get(position);
      holder.newsBinding.setNews(news);
+     holder.newsBinding.cardNews.setOnClickListener(v -> {
+         Intent intent=new Intent(context.getApplicationContext(), NewsDetailsActivity.class);
+         intent.putExtra("heading",newsList.get(position).getHeading());
+         intent.putExtra("description",newsList.get(position).getData());
+         intent.putExtra("image",newsList.get(position).getImage());
+         context.startActivity(intent);
+     });
 
     }
 

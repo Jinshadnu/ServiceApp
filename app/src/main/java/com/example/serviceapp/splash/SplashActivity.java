@@ -16,7 +16,7 @@ import com.example.serviceapp.databinding.ActivitySplashBinding;
 import com.example.serviceapp.home.HomeActivity;
 
 public class SplashActivity extends AppCompatActivity {
-    private static int SPLASH_TIME_OUT = 4000;
+    private static int SPLASH_TIME_OUT = 9000;
     public ActivitySplashBinding splashBinding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

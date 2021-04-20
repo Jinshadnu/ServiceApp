@@ -85,11 +85,11 @@ public class HomeActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_updates:
-                Intent playStore = new Intent(Intent.ACTION_VIEW, Uri.parse("https://https://play.google.com/store/apps/details?id=com.vingcoz.laundryapp"));
+                Intent playStore = new Intent(Intent.ACTION_VIEW, Uri.parse("https://https://play.google.com/store/apps/details?id=com.vingcoz.VadakkekadOnline"));
                 startActivity(playStore);
                 return (true);
             case R.id.action_privacy:
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://vingcoz.com/mobile_app/privacypolicy/kuruvilla_dental_clinic_privacy_policy.html"));
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://vingcoz.in/vadakkekadonline/privacypolicy/privacy_policy_vadakkad_online.html"));
                 startActivity(browserIntent);
                 return (true);
             case R.id.action_exit:

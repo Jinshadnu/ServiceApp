@@ -43,6 +43,16 @@
                     android:layout_marginLeft="@dimen/size_15dp"
                     android:layout_marginTop="@dimen/size_15dp"
                     />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="First Floor. KMA Tower, One Way,"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/size_16sp"
+                    android:layout_marginLeft="@dimen/size_15dp"
+                    android:layout_marginTop="@dimen/size_5dp"
+                    />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

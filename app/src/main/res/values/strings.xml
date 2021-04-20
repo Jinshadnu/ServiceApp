@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">ServiceApp</string>
+    <string name="app_name">Vadakkekad Online</string>
     <string name="title_activity_home">HomeActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Vingcoz Technology Pvt Ltd.</string>
+    <string name="nav_header_title">Vadakkekad Online.</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
@@ -19,7 +19,7 @@
     <string name="menu_call">Call</string>
     <string name="menu_whatsapp">Contact Us</string>
     <string name="menu_contactus">Contact us</string>
-    <string name="share_content">Hey, please check this app for getting our services.\nService App  \n\nFirst Floor KMA Tower, \nOpposite Kunnamkulam Muncipality, \nKerala 680503, \nIndia \n\n7994648430    \n\n  https://play.google.com/store/apps/details?id=com.vingcoz.ServiceApp</string>
+    <string name="share_content">Hey, please check this app for getting our services.\nService App  \n\nFirst Floor KMA Tower, \nOpposite Kunnamkulam Muncipality, \nKerala 680503, \nIndia \n\n7994648430    \n\n  https://play.google.com/store/apps/details?id=com.vingcoz.VadakkekadOnline</string>
     <string name="exit">Exit</string>
 
 </resources>

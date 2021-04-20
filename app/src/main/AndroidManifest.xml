@@ -16,17 +16,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ServiceApp"
         android:usesCleartextTraffic="true">
-        <activity android:name=".home.NewsDetailsActivity"></activity>
-        <activity android:name=".home.ui.home.AddDataActivity" />
-        <activity android:name=".home.ItemsActivity" />
-        <activity android:name=".home.NewsActivity" />
-        <activity android:name=".home.SubCategoryActivity" />
+        <activity android:name=".home.NewsDetailsActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".home.ui.home.AddDataActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".home.ItemsActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".home.NewsActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".home.SubCategoryActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".home.HomeActivity"
             android:label="@string/title_activity_home"
-            android:theme="@style/Theme.ServiceApp.NoActionBar" />
+            android:theme="@style/Theme.ServiceApp.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity android:name=".MainActivity" />
-        <activity android:name=".splash.SplashActivity">
+        <activity android:name=".splash.SplashActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
